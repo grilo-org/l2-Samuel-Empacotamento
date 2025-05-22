@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  packaging-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: empacotamento_image
+    container_name: empacotamento_container
+    ports:
+      - "8888:8888"
+    environment:
+      - AUTHENTICATION_SECRET=secret
