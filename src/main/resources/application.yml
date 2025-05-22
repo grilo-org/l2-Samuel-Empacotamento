@@ -4,3 +4,7 @@ server:
 spring:
   application:
     name: Empacotamento
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
