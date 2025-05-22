@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: Empacotamento
+  authentication:
+    secret: ${AUTHENTICATION_SECRET:secret}
 
 springdoc:
   swagger-ui:
