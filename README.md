@@ -24,8 +24,8 @@ A API deve processar os pedidos determinar a melhor forma de embalar os produtos
 
 A entrada e saída de dados devem seguir os exemplos abaixo:
 
-- [entrada.json](ioexample/entrada.json)
-- [saida.json](ioexample/saida.json)
+- [entrada.json](ioexamples/entrada.json)
+- [saida.json](ioexamples/saida.json)
 
 
 ## ✅ Requisitos do Desafio
@@ -69,3 +69,11 @@ A entrada e saída de dados devem seguir os exemplos abaixo:
 3. No Swagger você verá a aba **/packages**. Ela provavelmente está encolhida. Abra essa aba e você verá exemplos de solicitação e resposta da aplicação.
 4. Ao clicar no botão **"Try it out"** você poderá editar o exemplo de solicitação da forma que preferir, desde que mantenha o padrão JSON. Adicione pedidos, produtos, de diferentes tamanhos.
 5. Você pode clicar no botão **"Execute"**, mas nesse momento sua resposta será um erro. Agora, para que tudo dê certo, procure pelo botão **"Authorize"**, informe a senha, que é **"secret"**. Agora pode executar novamente a solicitação. Você deve receber uma resposta que representa os pedidos, com seus produtos representados dentro de caixas.
+
+---
+
+# 📺 YouTube
+
+Ficou confuso com algo? Quer me ver rodando a aplicação e explicando o código? Então eu te convido a assistir meu vídeo no YouTube.
+
+**Video estará disponível em breve**
