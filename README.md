@@ -1,4 +1,4 @@
-# 🧩 Desafio - Empacotamento
+# 🧩 Desafio 1 - Empacotamento
 
 ## 🛒 Contexto
 
@@ -24,8 +24,8 @@ A API deve processar os pedidos determinar a melhor forma de embalar os produtos
 
 A entrada e saída de dados devem seguir os exemplos abaixo:
 
-- [entrada.json](ioexamples/entrada.json)
-- [saida.json](ioexamples/saida.json)
+- [entrada.json](challengefiles/entrada.json)
+- [saida.json](challengefiles/saida.json)
 
 
 ## ✅ Requisitos do Desafio
@@ -77,3 +77,57 @@ A entrada e saída de dados devem seguir os exemplos abaixo:
 Ficou confuso com algo? Quer me ver rodando a aplicação e explicando o código? Então eu te convido a assistir meu vídeo no YouTube.
 
 **Video estará disponível em breve**
+
+---
+
+# 🧩 Desafio 2 - Empacotamento
+
+## Considerando o MER a seguir, responda às perguntas:
+
+- [mer.png](challengefiles/mer.png)
+
+### 1 - Diga uma query SQL para mostrar a quantidade de horas que cada professor tem comprometido em aulas
+
+```sql
+SELECT 
+    p.id AS professor_id,
+    p.name AS professor_name,
+    SUM(TIMESTAMPDIFF(MINUTE, cs.start_time, cs.end_time)) / 60 AS total_hours
+FROM 
+    PROFESSOR p
+JOIN SUBJECT s ON s.taught_by = p.id
+JOIN CLASS c ON c.subject_id = s.id
+JOIN CLASS_SCHEDULE cs ON cs.class_id = c.id
+GROUP BY 
+    p.id, p.name
+ORDER BY 
+    total_hours DESC;
+```
+Essa query combina os ids de professores, assuntos, turmas e aulas, dessa forma, é selecionado apenas as aulas que um professor lecionará. Exibe o id e nome dos professores, e por fim faz um cálculo de diferença entre data de início e de fim, resultando na quantidade de horas de cada professor.
+
+
+### 2 - Diga uma query SQL para mostrar uma lista de salas com horários livres e ocupados
+
+```sql
+SELECT 
+    r.id AS room_id,
+    b.name AS building_name,
+    cs.day_of_week,
+    cs.start_time,
+    cs.end_time
+FROM 
+    ROOM r
+JOIN BUILDING b ON b.id = r.building_id
+JOIN CLASS_SCHEDULE cs ON cs.room_id = r.id
+ORDER BY 
+    r.id, cs.day_of_week, cs.start_time;
+```
+Essa query faz um vínculo entre prédio, sala e aula. Exibe id da sala, nome do prédio, dia da semana, data de início e de fim.
+
+
+### 🤔 Considerações
+As queries são ideias de como poderia ser uma reposta adequada, mas é importante entender que num cenário mais realista, 
+as tabelas poderiam ser diferentes, por consequência as queries também. Por exemplo: geralmente ao se tratar de datas, 
+não é bom quebrar em dia da semana, hora de fim e início, a não ser que de alguma forma realmente isso seja algo desejado.
+O mais comum seria utilizar um formato data-hora, dessa forma da para representar o dia+hora de início e fim, com apenas 2 campos.
+Dito isso, obviamente a ideia do exercício é não ser complexo de mais.
