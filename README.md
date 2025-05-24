@@ -76,7 +76,7 @@ A entrada e saída de dados devem seguir os exemplos abaixo:
 
 Ficou confuso com algo? Quer me ver rodando a aplicação e explicando o código? Então eu te convido a assistir meu vídeo no YouTube.
 
-**Video estará disponível em breve**
+- [Desafio - Empacotamento](https://www.youtube.com/watch?v=lMA7WZUxDSc)
 
 ---
 
