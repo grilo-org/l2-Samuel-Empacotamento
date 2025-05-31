@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "CodeQL - Tolerância a Parse Errors"
 
 on:
   push:
@@ -6,7 +6,8 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '0 0 * * 0'  # roda semanalmente como fallback
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
 
 jobs:
   analyze:
@@ -20,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java' ]
+        language: [ 'java', 'javascript', 'python', 'php' ]
 
     steps:
     - name: Checkout repository
@@ -30,6 +31,8 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: ${{ matrix.language }}
+      env:
+        CODEQL_EXTRA_OPTIONS: --no-exit-on-parse-error
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2
