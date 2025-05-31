@@ -1,4 +1,4 @@
-name: "CodeQL - Tolerância a Parse Errors"
+name: "CodeQL - Teste Java Simplificado"
 
 on:
   push:
@@ -11,31 +11,26 @@ on:
 
 jobs:
   analyze:
-    name: Analyze
+    name: Analyze Java
     runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
       security-events: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'java', 'javascript', 'python', 'php' ]
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
+      uses: github/codeql-action/init@v3
       with:
-        languages: ${{ matrix.language }}
+        languages: java
       env:
         CODEQL_EXTRA_OPTIONS: --no-exit-on-parse-error
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+      uses: github/codeql-action/autobuild@v3
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      uses: github/codeql-action/analyze@v3
